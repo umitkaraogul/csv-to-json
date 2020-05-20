@@ -8,7 +8,12 @@ csv()
   .then((jsonObj) => {
     fs.writeFileSync(
       path.join(__dirname, "customer-data.json"),
-      JSON.stringify(jsonObj)
+      JSON.stringify(jsonObj, null, 2),
+      (error) => {
+        if (error) return process.exit(1);
+        console.log("done");
+        process.exit(0);
+      }
     );
   });
 
